@@ -21,12 +21,12 @@ import (
 	"github.com/go-jose/go-jose/v4"
 	"github.com/go-jose/go-jose/v4/jwt"
 	"github.com/google/uuid"
-	"github.com/sandertv/gophertunnel/minecraft/internal"
-	"github.com/sandertv/gophertunnel/minecraft/protocol"
-	"github.com/sandertv/gophertunnel/minecraft/protocol/login"
-	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
-	"github.com/sandertv/gophertunnel/minecraft/resource"
-	"github.com/sandertv/gophertunnel/minecraft/text"
+	"github.com/appoulos/gophertunnel/minecraft/internal"
+	"github.com/appoulos/gophertunnel/minecraft/protocol"
+	"github.com/appoulos/gophertunnel/minecraft/protocol/login"
+	"github.com/appoulos/gophertunnel/minecraft/protocol/packet"
+	"github.com/appoulos/gophertunnel/minecraft/resource"
+	"github.com/appoulos/gophertunnel/minecraft/text"
 )
 
 // exemptedResourcePack is a resource pack that is exempted from being downloaded. These packs may be directly

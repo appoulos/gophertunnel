@@ -1,8 +1,8 @@
 package minecraft
 
 import (
-	"github.com/sandertv/gophertunnel/minecraft/protocol"
-	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
+	"github.com/appoulos/gophertunnel/minecraft/protocol"
+	"github.com/appoulos/gophertunnel/minecraft/protocol/packet"
 	"io"
 )
 

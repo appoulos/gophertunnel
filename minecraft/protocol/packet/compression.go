@@ -9,7 +9,7 @@ import (
 
 	"github.com/klauspost/compress/flate"
 	"github.com/klauspost/compress/snappy"
-	"github.com/sandertv/gophertunnel/minecraft/internal"
+	"github.com/appoulos/gophertunnel/minecraft/internal"
 )
 
 // Compression represents a compression algorithm that can compress and decompress data.

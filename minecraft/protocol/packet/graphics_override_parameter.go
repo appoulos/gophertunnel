@@ -1,7 +1,7 @@
 package packet
 
 import (
-	"github.com/sandertv/gophertunnel/minecraft/protocol"
+	"github.com/appoulos/gophertunnel/minecraft/protocol"
 )
 
 // GraphicsOverrideParameter is sent by the server to override graphics parameters.

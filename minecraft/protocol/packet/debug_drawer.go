@@ -3,7 +3,7 @@ package packet
 import (
 	"github.com/go-gl/mathgl/mgl32"
 	"image/color"
-	"github.com/sandertv/gophertunnel/minecraft/protocol"
+	"github.com/appoulos/gophertunnel/minecraft/protocol"
 )
 
 const (

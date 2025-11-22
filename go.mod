@@ -10,7 +10,6 @@ require (
 	github.com/klauspost/compress v1.18.1
 	github.com/pelletier/go-toml v1.9.5
 	github.com/sandertv/go-raknet v1.14.3-0.20250305181847-6af3e95113d6
-	github.com/sandertv/gophertunnel v1.51.0
 	golang.org/x/net v0.35.0
 	golang.org/x/oauth2 v0.23.0
 	golang.org/x/text v0.22.0

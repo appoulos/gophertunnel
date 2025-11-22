@@ -23,11 +23,11 @@ import (
 	"github.com/go-jose/go-jose/v4"
 	"github.com/go-jose/go-jose/v4/jwt"
 	"github.com/google/uuid"
-	"github.com/sandertv/gophertunnel/minecraft/auth"
-	"github.com/sandertv/gophertunnel/minecraft/internal"
-	"github.com/sandertv/gophertunnel/minecraft/protocol"
-	"github.com/sandertv/gophertunnel/minecraft/protocol/login"
-	"github.com/sandertv/gophertunnel/minecraft/protocol/packet"
+	"github.com/appoulos/gophertunnel/minecraft/auth"
+	"github.com/appoulos/gophertunnel/minecraft/internal"
+	"github.com/appoulos/gophertunnel/minecraft/protocol"
+	"github.com/appoulos/gophertunnel/minecraft/protocol/login"
+	"github.com/appoulos/gophertunnel/minecraft/protocol/packet"
 	"golang.org/x/oauth2"
 )
 
