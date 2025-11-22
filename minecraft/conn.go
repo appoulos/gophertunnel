@@ -719,6 +719,8 @@ func (conn *Conn) handlePacket(pk packet.Packet) error {
 // handleRequestNetworkSettings handles an incoming RequestNetworkSettings packet. It returns an error if the protocol
 // version is not supported, otherwise sending back a NetworkSettings packet.
 func (conn *Conn) handleRequestNetworkSettings(pk *packet.RequestNetworkSettings) error {
+	_ = pk
+	/*
 	found := false
 	for _, pro := range conn.acceptedProto {
 		if pro.ID() == pk.ClientProtocol {
@@ -737,6 +739,7 @@ func (conn *Conn) handleRequestNetworkSettings(pk *packet.RequestNetworkSettings
 		_ = conn.WritePacket(&packet.PlayStatus{Status: status})
 		return fmt.Errorf("incompatible protocol version: expected %v, got %v", protocol.CurrentProtocol, pk.ClientProtocol)
 	}
+  */
 
 	conn.expect(packet.IDLogin)
 	if err := conn.WritePacket(&packet.NetworkSettings{
