@@ -25,7 +25,7 @@ func main() {
 	// 	panic(err)
 	// }
 	listener, err := minecraft.ListenConfig{
-		StatusProvider:         minecraft.NewStatusProvider("A Bedrock Server", "Gophertunnel"),
+		StatusProvider: minecraft.NewStatusProvider("A Bedrock Server", "Gophertunnel"),
 		// StatusProvider:         p,
 		AuthenticationDisabled: true,
 		// TexturePacksRequired:   false,
@@ -34,7 +34,7 @@ func main() {
 		panic(err)
 	}
 	defer listener.Close()
-	log.Println("listening on "+config.Connection.LocalAddress)
+	log.Println("listening on " + config.Connection.LocalAddress)
 
 	for {
 		c, err := listener.Accept()
@@ -50,7 +50,7 @@ func main() {
 func handleConn(conn *minecraft.Conn, listener *minecraft.Listener, config config, src oauth2.TokenSource) {
 	serverConn, err := minecraft.Dialer{
 		TokenSource: src,
-		ClientData: conn.ClientData(),
+		ClientData:  conn.ClientData(),
 	}.Dial("raknet", config.Connection.RemoteAddress)
 	if err != nil {
 		panic(err)
