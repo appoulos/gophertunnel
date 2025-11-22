@@ -6,11 +6,6 @@ import (
 	"crypto/rand"
 	"errors"
 	"fmt"
-	"github.com/appoulos/gophertunnel/minecraft/internal"
-	"github.com/appoulos/gophertunnel/minecraft/protocol"
-	"github.com/appoulos/gophertunnel/minecraft/protocol/login"
-	"github.com/appoulos/gophertunnel/minecraft/protocol/packet"
-	"github.com/appoulos/gophertunnel/minecraft/resource"
 	"log/slog"
 	"math"
 	"net"
@@ -18,6 +13,12 @@ import (
 	"sync"
 	"sync/atomic"
 	"time"
+
+	"github.com/appoulos/gophertunnel/minecraft/internal"
+	"github.com/appoulos/gophertunnel/minecraft/protocol"
+	"github.com/appoulos/gophertunnel/minecraft/protocol/login"
+	"github.com/appoulos/gophertunnel/minecraft/protocol/packet"
+	"github.com/appoulos/gophertunnel/minecraft/resource"
 )
 
 // ListenConfig holds settings that may be edited to change behaviour of a Listener.

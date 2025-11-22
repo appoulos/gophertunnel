@@ -18,15 +18,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/go-jose/go-jose/v4"
-	"github.com/go-jose/go-jose/v4/jwt"
-	"github.com/google/uuid"
 	"github.com/appoulos/gophertunnel/minecraft/internal"
 	"github.com/appoulos/gophertunnel/minecraft/protocol"
 	"github.com/appoulos/gophertunnel/minecraft/protocol/login"
 	"github.com/appoulos/gophertunnel/minecraft/protocol/packet"
 	"github.com/appoulos/gophertunnel/minecraft/resource"
 	"github.com/appoulos/gophertunnel/minecraft/text"
+	"github.com/go-jose/go-jose/v4"
+	"github.com/go-jose/go-jose/v4/jwt"
+	"github.com/google/uuid"
 )
 
 // exemptedResourcePack is a resource pack that is exempted from being downloaded. These packs may be directly
@@ -39,6 +39,7 @@ type exemptedResourcePack struct {
 // exemptedPacks is a list of all resource packs that do not need to be downloaded, but may always be applied
 // in the ResourcePackStack packet.
 var exemptedPacks = []exemptedResourcePack{
+	/* apoulos
 	{
 		uuid:    "b41c2785-c512-4a49-af56-3a87afd47c57",
 		version: "1.21.30",
@@ -67,6 +68,7 @@ var exemptedPacks = []exemptedResourcePack{
 		uuid:    "0fba4063-dba1-4281-9b89-ff9390653530",
 		version: "1.0.0",
 	},
+  apoulos */
 }
 
 // Conn represents a Minecraft (Bedrock Edition) connection over a specific net.Conn transport layer. Its
@@ -720,7 +722,7 @@ func (conn *Conn) handlePacket(pk packet.Packet) error {
 // version is not supported, otherwise sending back a NetworkSettings packet.
 func (conn *Conn) handleRequestNetworkSettings(pk *packet.RequestNetworkSettings) error {
 	_ = pk
-	/*
+	/* apoulos
 	found := false
 	for _, pro := range conn.acceptedProto {
 		if pro.ID() == pk.ClientProtocol {
@@ -739,7 +741,7 @@ func (conn *Conn) handleRequestNetworkSettings(pk *packet.RequestNetworkSettings
 		_ = conn.WritePacket(&packet.PlayStatus{Status: status})
 		return fmt.Errorf("incompatible protocol version: expected %v, got %v", protocol.CurrentProtocol, pk.ClientProtocol)
 	}
-  */
+  apoulos */
 
 	conn.expect(packet.IDLogin)
 	if err := conn.WritePacket(&packet.NetworkSettings{

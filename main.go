@@ -2,41 +2,46 @@ package main
 
 import (
 	"errors"
-	"github.com/pelletier/go-toml"
-	"github.com/appoulos/gophertunnel/minecraft"
-	"github.com/appoulos/gophertunnel/minecraft/auth"
-	"golang.org/x/oauth2"
 	"log"
 	"os"
 	"sync"
+
+	"github.com/appoulos/gophertunnel/minecraft"
+	"github.com/pelletier/go-toml"
+	"golang.org/x/oauth2"
 )
 
 // The following program implements a proxy that forwards players from one local address to a remote address.
 func main() {
 	config := readConfig()
-	token, err := auth.RequestLiveToken()
-	if err != nil {
-		panic(err)
-	}
-	src := auth.RefreshTokenSource(token)
+	// token, err := auth.RequestLiveToken()
+	// if err != nil {
+	// 	panic(err)
+	// }
+	// src := auth.RefreshTokenSource(token)
 
-	p, err := minecraft.NewForeignStatusProvider(config.Connection.RemoteAddress)
-	if err != nil {
-		panic(err)
-	}
+	// p, err := minecraft.NewForeignStatusProvider(config.Connection.RemoteAddress)
+	// if err != nil {
+	// 	panic(err)
+	// }
 	listener, err := minecraft.ListenConfig{
-		StatusProvider: p,
+		StatusProvider:         minecraft.NewStatusProvider("A Bedrock Server", "Gophertunnel"),
+		// StatusProvider:         p,
+		AuthenticationDisabled: true,
+		// TexturePacksRequired:   false,
 	}.Listen("raknet", config.Connection.LocalAddress)
 	if err != nil {
 		panic(err)
 	}
 	defer listener.Close()
+	log.Println("listening on "+config.Connection.LocalAddress)
 	for {
 		c, err := listener.Accept()
 		if err != nil {
 			panic(err)
 		}
-		go handleConn(c.(*minecraft.Conn), listener, config, src)
+		listener.Disconnect(c.(*minecraft.Conn), "Waking server. Try back in 15 seconds, please")
+		// go handleConn(c.(*minecraft.Conn), listener, config, src)
 	}
 }
 
@@ -44,7 +49,7 @@ func main() {
 func handleConn(conn *minecraft.Conn, listener *minecraft.Listener, config config, src oauth2.TokenSource) {
 	serverConn, err := minecraft.Dialer{
 		TokenSource: src,
-		ClientData:  conn.ClientData(),
+		ClientData: conn.ClientData(),
 	}.Dial("raknet", config.Connection.RemoteAddress)
 	if err != nil {
 		panic(err)
