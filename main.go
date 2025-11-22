@@ -35,6 +35,7 @@ func main() {
 	}
 	defer listener.Close()
 	log.Println("listening on "+config.Connection.LocalAddress)
+
 	for {
 		c, err := listener.Accept()
 		if err != nil {
